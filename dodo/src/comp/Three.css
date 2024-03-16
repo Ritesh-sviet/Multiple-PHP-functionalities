@@ -1,0 +1,240 @@
+/* Imports */
+/* -------------------------------------- */
+@import 'https://fonts.googleapis.com/css?family=Noto+Sans';
+
+/* Variables */
+/* -------------------------------------- */
+:root {
+    --scrollbar-width: 10px;
+    --chat-thread-bgd-color: rgba(25, 147, 147, 0.2);
+    --chat-thread-msg-arrow-size: 15px;
+    --chat-thread-avatar-size: 50px;
+    --chat-thread-offset: calc(var(--chat-thread-avatar-size) + 30px);
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-track {
+    border-radius: var(--scrollbar-width);
+    background-color: rgba(25, 147, 147, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: var(--scrollbar-width);
+    background-color: var(--chat-thread-bgd-color);
+}
+
+.chat-thread {
+    margin: 24px auto 0 auto;
+    padding: 0 20px 0 0;
+    list-style: none;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.chat-thread li {
+    position: relative;
+    clear: both;
+    display: inline-block;
+    padding: 16px 40px 16px 20px;
+    margin: 0 0 20px 0;
+    font: 16px/20px 'Noto Sans', sans-serif;
+    border-radius: 10px;
+    background-color: var(--chat-thread-bgd-color);
+}
+
+/* Chat - Avatar */
+.chat-thread li:before {
+    position: absolute;
+    top: 0;
+    width: var(--chat-thread-avatar-size);
+    height: var(--chat-thread-avatar-size);
+    border-radius: 50%;
+    content: '';
+}
+
+/* Chat - Speech Bubble Arrow */
+.chat-thread li:after {
+    position: absolute;
+    top: var(--chat-thread-msg-arrow-size);
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: var(--chat-thread-msg-arrow-size) solid var(--chat-thread-bgd-color);
+}
+
+/* right side */
+.chat-thread .right {
+    animation: show-chat-odd 0.15s ease-in;
+    float: right;
+    margin-right: var(--chat-thread-offset);
+    color: #0AD5C1;
+}
+
+/* .chat-thread li:nth-child(odd) {
+    animation: show-chat-odd 0.15s ease-in;  
+    float: right;
+    margin-right: var(--chat-thread-offset);
+    color: #0AD5C1;
+} */
+
+.chat-thread .right:before {
+    right: calc(-1 * var(--chat-thread-offset));
+}
+
+.chat-thread .right:after {
+    border-right: var(--chat-thread-msg-arrow-size) solid transparent;
+    right: calc(-1 * var(--chat-thread-msg-arrow-size));
+}
+
+/* .chat-thread li:nth-child(odd):before {
+    right: calc(-1 * var(--chat-thread-offset));
+}
+
+.chat-thread li:nth-child(odd):after {
+    border-right: var(--chat-thread-msg-arrow-size) solid transparent;
+    right: calc(-1 * var(--chat-thread-msg-arrow-size));
+} */
+
+
+/* left side  */
+.chat-thread .left {
+    animation: show-chat-even 0.15s ease-in;
+    float: left;
+    margin-left: var(--chat-thread-offset);
+    color: #0EC879;
+}
+
+.chat-thread .left:before {
+    left: calc(-1 * var(--chat-thread-offset));
+}
+
+.chat-thread .left:after {
+    border-left: var(--chat-thread-msg-arrow-size) solid transparent;
+    left: calc(-1 * var(--chat-thread-msg-arrow-size));
+}
+
+/* .chat-thread li:nth-child(even) {
+    animation: show-chat-even 0.15s ease-in;
+    float: left;
+    margin-left: var(--chat-thread-offset);
+    color: #0EC879;
+}
+
+.chat-thread li:nth-child(even):before {
+    left: calc(-1 * var(--chat-thread-offset));
+}
+
+.chat-thread li:nth-child(even):after {
+    border-left: var(--chat-thread-msg-arrow-size) solid transparent;
+    left: calc(-1 * var(--chat-thread-msg-arrow-size));
+} */
+
+
+.chat-window {
+    position: fixed;
+    bottom: 18px;
+}
+
+.chat-window-message {
+    width: 600px;
+    height: 48px;
+    font: 15px/15px 'Noto Sans', sans-serif;
+    background: none;
+    color: #0AD5C1;
+    border: 0;
+    border-bottom: .5px solid var(--chat-thread-bgd-color);
+    outline: none;
+}
+
+/* Responsive */
+/* -------------------------------------- */
+/* Small screens */
+@media all and (max-width: 767px) {
+    .chat-thread {
+        width: 90%;
+        height: 260px;
+    }
+
+    .chat-window {
+        left: 5%;
+        width: 90%;
+    }
+}
+
+/* Medium and large screens */
+@media all and (min-width: 768px) {
+    .chat-thread {
+        width: 80%;
+        height: 300px;
+    }
+
+    .chat-window {
+        left: 25%;
+        width: 50%;
+    }
+}
+
+@keyframes show-chat-even {
+    0% {
+        margin-left: -480px;
+    }
+
+    100% {
+        margin-left: 0;
+    }
+}
+
+@keyframes show-chat-odd {
+    0% {
+        margin-right: -480px;
+    }
+
+    100% {
+        margin-right: 0;
+    }
+}
+
+
+
+
+
+/* Chat - Username */
+
+
+
+
+/* Chat - Username */
+.chat-thread .username {
+    width: 100%;
+    position: absolute;
+    /* top:50px; */
+    bottom: 0;
+    font-size: 12px;
+    color: #999;
+}
+
+/* right side */
+.chat-thread .right .username {
+    animation: show-chat-odd 0.15s ease-in;
+    right: calc(var(--chat-thread-offset) - 80px); /* Adjust this value as needed */
+    bottom: calc(var(--chat-thread-offset) - 100px); /* Adjust this value as needed */
+}
+
+/* left side */
+.chat-thread .left .username {
+    animation: show-chat-even 0.15s ease-in;
+    left: calc(var(--chat-thread-offset) - 80px); /* Adjust this value as needed */
+    bottom: calc(var(--chat-thread-offset) - 100px); /* Adjust this value as needed */
+}
